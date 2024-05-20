@@ -1,0 +1,25 @@
+.date1{
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    
+}
+.date2{
+    position: absolute;
+    top: 15%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+body{
+    background-color: aqua;
+}
+.cont{
+    font-size: x-large;
+    margin-left: 2.5%;
+    font-weight:600;
+    /* font-style: oblique; */
+    /* margin-bottom: px; */
+    position: relative;
+    top :20px;
+}
