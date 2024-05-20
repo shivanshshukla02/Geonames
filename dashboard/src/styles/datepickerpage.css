@@ -1,5 +1,4 @@
 
-
 form {
   margin-bottom: 5rem; /* Add a margin to the top of the form */
 }
@@ -106,7 +105,7 @@ table {
   margin-bottom: 0;
   margin-top: 0;
   position: absolute;
-  right: 900px;
+  right: 80%;
  color: #c10e21;
 }
 .end {
@@ -233,7 +232,7 @@ table {
 
 .dropdown button{
   color:#ffe4e4;
-  background-color:rgb(220, 53, 69);
+  background-color:rgb(53, 117, 220);
   position:absolute;
   right: 120px;
   top: 7px;
@@ -241,20 +240,21 @@ table {
   align-items: center;
   padding-bottom: 10px;
   padding-top: 1px;
-  
+  border-color: blue;
+  font-style: oblique;
 
-  border: 1px solid rgb(220, 53, 69);
+  /* border: 1px solid rgb(220, 53, 69); */
 }
 .dropdown button:hover{
-  color: rgb(247, 247, 247);
+  color: rgb(0, 0, 0);
+  /* background-color:  rgb(220, 53, 69);
   background-color:  rgb(220, 53, 69);
-  background-color:  rgb(220, 53, 69);
-  box-shadow:  rgb(220, 53, 69);;
+  box-shadow:  rgb(220, 53, 69);; */
 }
 
 
 .dropdown-menu.show{
-  color: rgb(221, 22, 22);
+  /* color: rgb(221, 22, 22); */
 }
 #pgdata{
   display: flex;
@@ -269,14 +269,43 @@ table {
   position: absolute;
   border-radius: 15px;
   /* box-shadow: 6px 6px 6px 6px #0000003f; */
-  right: -90px;
-  top: 120px;
+  right: -9.5% ;
+  top: 30%;
   padding: 1px 1px 1px 1px;
 
   /* backgroud-color: #f80505b9; */
 
+}
+#p1{
+  background-color: rgba(21, 153, 21, 0.689);
+  border-color: rgba(13, 231, 13, 0.325);
+  color: #ffffff;
+}
+#p1:hover{
+  background-color: rgba(11, 99, 13, 0.499);
+  border-color: rgba(13, 129, 231, 0.322);
+  color: rgb(5, 2, 2);
+}
+#p123{
+  color: #f9f9f9;
+  background-color: #1236b7ce;
+  border-color: #1236b76e;
 
-  
+ } #p123:hover{
+  background-color: rgba(13, 129, 231, 0.499);
+  border-color: rgba(13, 129, 231, 0.322);
+  color: rgb(5, 2, 2);
+}
+#p12{
+  color: rgb(255, 255, 255);
+  background-color: #1e8ba9f4;
+  border-color: #1e8ba9b6;
+
+}
+#p12:hover{
+  background-color: rgba(13, 129, 231, 0.499);
+  border-color: rgba(13, 129, 231, 0.322);
+  color: rgb(5, 2, 2);
 }
 .dataTables_wrapper{
   position: sticky;
@@ -356,7 +385,7 @@ tbody + thead{
   width: 90%;
   height: 90%;
   color: #3a0b0b;
-  background-color: rgb(255, 255, 255);
+  background-color:#d4ddf5;
   z-index: 100;
   border-radius: 15px;
   /* border: 2px solid black; */
@@ -370,27 +399,38 @@ tbody + thead{
  
 .modal-content {
  
-  background-color: #8f0f0f;
+  background-color: #8aa4fa;
  
   padding: 10px;
  
   border-radius: 5px;
   width: 100vh;
   height: 100vh;
-
+font-size: larger;
   overflow: auto;
   z-index: 100; /* Set a higher z-index value than the modal background to ensure the content is displayed on top of the background */
  
+}
+.result{
+  font-size: x-large;
+  position: relative;
+  left: 45%;
+  /* border: 2px solid black; */
+  width: 10vw;
 }
  
 .modal-content .close{
   float: right;
   cursor: pointer;
   padding: 0.5rem 0.8rem;
+  /* display: block; */
  border: solid 1px #000000;
+ background-color: white;
  justify-content: center;
  align-items: center;
  font-size: larger;
+ position: relative;
+ bottom: 3%;
  
 }
 .close{
@@ -408,8 +448,8 @@ tbody + thead{
 }
 .resultModal{
 white-space: pre-wrap;
-  background-color: #a5a5a5;
-  color: rgb(3, 1, 1);
+  background-color: #ffffff;
+  color: black;
   padding: 5px 5px 5px 5px;
   border: 1px solid black;
   border-radius: 5px;
