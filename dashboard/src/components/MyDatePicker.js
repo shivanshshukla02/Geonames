@@ -8,6 +8,7 @@ import "../styles/datepickerpage.css";
 import Footer from "./Footer";
 import React from "react";
 import { Pie, Doughnut } from "react-chartjs-2";
+import DropdownI from "./Dropdown";
 
 let PiChartData;
 let BarChartData = {
@@ -24,6 +25,7 @@ const options1 = {
     text: "Pie Chart Example",
   },
 };
+let time;
 
 // const[pieData,setPieData]={
 //   labels: ["impelsys","cecme","lll","kkk"],
@@ -59,18 +61,72 @@ const options1 = {
 function MyDatePicker() {
   const handleClick = (itemName) => {
     setSelectedValue(itemName);
-    setclientid(itemName); 
+    setclientid(itemName);
     setmytitel(itemName);
     setFormChanged(true);
   };
-  const [displaydata,setdisplaydata]=useState(false);
-  const[modaldata,setmodaldata]=useState("");
+  const handleClick1 = (itemName) => {
+    setFormChanged(true);
+    setmytitel1(itemName);
+    time = itemName;
+    console.log(time, "pooooo");
+    if (time === "6 Months") {
+      setdisabled(true);
+      const tt = new Date(Date.now() - 180 * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .slice(0, 10);
+      setFromDate(tt);
+    } else if (time === "1 Year") {
+      setdisabled(true);
+      console.log("pllllllpppooooo");
+      const tt = new Date(Date.now() - 365 * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .slice(0, 10);
+      setFromDate(tt);
+    } else if (time === "Random") {
+      setdisabled(false);
+    } else if (time === "2 Years") {
+      setdisabled(true);
+      console.log("pllllllpppooooo");
+      const tt = new Date(Date.now() - 365 * 2 * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .slice(0, 10);
+      setFromDate(tt);
+    } else if (time === "3 Years") {
+      setdisabled(true);
+      console.log("pllllllpppooooo");
+      const tt = new Date(Date.now() - 365 * 3 * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .slice(0, 10);
+      setFromDate(tt);
+    } else if (time === "4 Years") {
+      setdisabled(true);
+      console.log("pllllllpppooooo");
+      const tt = new Date(Date.now() - 365 * 4 * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .slice(0, 10);
+      setFromDate(tt);
+    } else if (time === "5 Years") {
+      setdisabled(true);
+      console.log("pllllllpppooooo");
+      const tt = new Date(Date.now() - 365 * 5 * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .slice(0, 10);
+      setFromDate(tt);
+    }
+  };
+
+  // const [time, settime] = useState("1 Month");
+  const [displaydata, setdisplaydata] = useState(false);
+  const [modaldata, setmodaldata] = useState("");
   const [formChanged, setFormChanged] = useState(false);
   const [FormChanged1, setFormChanged1] = useState(false);
   const [mytitel, setmytitel] = useState("ALL");
+  const [mytitel1, setmytitel1] = useState("1 Year");
   const tt = new Date(Date.now() - 365 * 24 * 60 * 60 * 1000)
     .toISOString()
     .slice(0, 10);
+  const [disabled, setdisabled] = useState(false);
   const [FromDate, setFromDate] = useState(tt);
   const datee = new Date().toISOString().slice(0, 10);
   const [ToDate, setToDate] = useState(datee);
@@ -92,14 +148,16 @@ function MyDatePicker() {
   });
 
   const handleDateChange = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     setFromDate(event.target.value);
     setFormChanged(true);
+    setmytitel1("Random");
   };
   const handleDateChange1 = (event) => {
     event.preventDefault();
     setToDate(event.target.value);
     setFormChanged(true);
+    setmytitel1("Random");
   };
   function getRandomColor() {
     const hue = Math.floor(Math.random() * 2) === 0 ? 200 : 330;
@@ -357,7 +415,7 @@ function MyDatePicker() {
     setToDate(ee);
     setSelectedValue("ALL");
     setmytitel("ALL");
-    
+    setmytitel1("1 Year");
   }
   function handleForm(event) {
     event.preventDefault();
@@ -386,15 +444,15 @@ function MyDatePicker() {
             createdAt: info.createdAt,
             clientId: info.clientId,
             query: info.query,
-            result:(  <a
-              // href={resQ}
-              // target="_blank"
-              onClick={() => handleModal(info.result)}
-            >
-              <u className="u1">Click here to view</u>
-            </a>)
-
-            
+            result: (
+              <a
+                // href={resQ}
+                // target="_blank"
+                onClick={() => handleModal(info.result)}
+              >
+                <u className="u1">Click here to view</u>
+              </a>
+            ),
           };
         });
       })
@@ -434,7 +492,7 @@ function MyDatePicker() {
                 field: "result",
                 sort: "asc",
                 width: 200,
-              }
+              },
             ],
             rows: DisplayData,
           };
@@ -479,12 +537,11 @@ function MyDatePicker() {
             createdAt: info.createdAt,
             clientId: info.clientId,
             query: info.query,
-            result:(<a
-              onClick={() => handleModal(info.result)}
-            >
-              <u className="u1">Click here to view</u>
-            </a>)
-            
+            result: (
+              <a onClick={() => handleModal(info.result)}>
+                <u className="u1">Click here to view</u>
+              </a>
+            ),
           };
         });
       })
@@ -520,9 +577,9 @@ function MyDatePicker() {
                 width: 200,
               },
               {
-                label: 'Result',
-                field: 'result',
-                sort: 'asc',
+                label: "Result",
+                field: "result",
+                sort: "asc",
                 width: 100,
               },
             ],
@@ -568,15 +625,15 @@ function MyDatePicker() {
     })
       .then((response) => response.json())
       .then((data1) => {
-        console.log(data1,"___________________________________---")
-        mynewdata=data1;
+        console.log(data1, "___________________________________---");
+        mynewdata = data1;
       })
       .then(() => {
-        console.log(mynewdata,'++++++++++++++++++++++++++++++++++++++++');
+        console.log(mynewdata, "++++++++++++++++++++++++++++++++++++++++");
       })
       .catch((error) => console.error(error));
   }, []);
-  
+
   // function getmapdata(){
 
   //   let dates = {
@@ -603,46 +660,68 @@ function MyDatePicker() {
   const handleExport = () => {
     fetch(
       `http://localhost:3009/export?fd=${FromDate}&td=${ToDate}&id=${selectedValue}`
-    ).then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error('Error: ' + response.status);
-      }
-    }).then((url)=>{
-      console.log(url);
-      const linker = document.createElement('a');
-      console.log(url['link'])
-      linker.href = url['link'];
-      linker.click();
-    });}
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Error: " + response.status);
+        }
+      })
+      .then((url) => {
+        console.log(url);
+        const linker = document.createElement("a");
+        console.log(url["link"]);
+        linker.href = url["link"];
+        linker.click();
+      });
+  };
+  console.log(uniqurIds, "pppppppppppppppiiiiiiiiiiiiii");
   const dropdownItems = uniqurIds.map((value) => (
     <Dropdown.Item
       key={value.id}
-      className="dropdown-item-danger"
+      className="dropdown-item-success"
       onClick={() => handleClick(value)}
     >
       {value}
     </Dropdown.Item>
   ));
+  const options = [
+    "Random",
+    "6 Months",
+    "1 Year",
+    "2 Years",
+    "3 Years",
+    "4 Years",
+    "5 Years",
+  ];
+  const DropdownItem = options.map((values) => (
+    <Dropdown.Item
+      key={values.id}
+      className="dropdown-item-primary"
+      onClick={() => handleClick1(values)}
+    >
+      {values}
+    </Dropdown.Item>
+  ));
+
   const handleModal = (jsonString) => {
     setmodaldata(jsonString);
- 
+
     setdisplaydata(true);
   };
 
   return (
     <>
-
-    {displaydata && (
+      {displaydata && (
         <div className="modalcontainer">
-            <div className="modal-content">
-              <span className="close" onClick={() => setdisplaydata(false)}>
-                &times;
-              </span>
-              <br />
-              <pre className="resultModal">{modaldata}</pre>
-            </div>
+          <div className="modal-content">
+            <span className="result">RESULT</span>
+            <span className="close" onClick={() => setdisplaydata(false)}>
+              &times;
+            </span>
+            <pre className="resultModal">{modaldata}</pre>
+          </div>
         </div>
       )}
 
@@ -652,15 +731,16 @@ function MyDatePicker() {
           style={{
             boxShadow: "2px 2px 5px 5px white",
             borderRadius: "15px",
-            marginTop: "50px",
+            marginTop: "5%",
             width: "200%",
             height: "60px",
             backgroundColor: "#07148f1c",
             border: "1px solid #0f30311c",
+            boxShadow: "3px 5px 3px 3px rgba(0, 0, 0, 0.411)",
           }}
         >
           <div className="row">
-            <div className="col-sm-3">
+            <div className="col-sm-2">
               <div className="start">
                 <label
                   htmlFor="datePicker"
@@ -670,6 +750,7 @@ function MyDatePicker() {
                     fontSize: "small",
                     fontStyle: "oblique",
                   }}
+                  // onClick={setdisabled(false)}
                 >
                   From date
                 </label>
@@ -686,19 +767,20 @@ function MyDatePicker() {
                   style={{
                     borderRadius: "7px",
                     fontStyle: "oblique",
-                    marginRight: "100px",
+                    // marginLeft: "6vh",
                     fontSize: "small",
                   }}
+                  disabled={disabled}
                 />
               </div>
             </div>
-            <div className="col-sm-3">
+            <div className="col-sm-2">
               <div className="end">
                 <label
                   htmlFor="datePicker1"
                   style={{
                     color: "black",
-                    marginLeft: "5px",
+                    // marginLeft: "15vh",
                     fontSize: "small",
                     fontStyle: "oblique",
                   }}
@@ -732,62 +814,100 @@ function MyDatePicker() {
                   style={{
                     borderRadius: "7px",
                     fontStyle: "oblique",
-                    marginLeft: "5px",
+
                     fontSize: "small",
-                  }}
+                  }}  
+                  disabled={disabled}
                 />
               </div>
             </div>
-            <br></br>
-
-            <div className="col-sm-3">
-              <label htmlFor="clientId"></label>
+            <div
+              className="col-sm-1"
+              style={{ position: "relative", marginTop: ".7%", left: "10%" }}
+            >
               <DropdownButton
-                className="dropdown-toggle btn-sm"
-                class="dropdown btn-danger btn-sm"
-                title={mytitel}
                 style={{
-                  marginTop: "-6%",
-                  marginBottom: "5%",
-                  color: " #5a5f5e1c",
+                  fontStyle: "oblique",
+                }}
+                title={mytitel1}
+              >
+                {DropdownItem}{" "}
+              </DropdownButton>
+            </div>
+            <div className="col-sm-3">
+              <DropdownButton
+                style={{ marginTop: "3%", fontStyle: "oblique" }}
+                title={mytitel}
+              >
+                {dropdownItems}{" "}
+              </DropdownButton>
+              <button
+                id="p1"
+                type="submit"
+                // className="btn btn-success"
+                onClick={handleForm}
+                // style={{ fontStyle: "oblique" }}
+                disabled={!formChanged}
+                style={{
+                  position: "relative",
+                  left: "85%",
+                  marginTop: "2%",
+                  fontStyle: "oblique",
+                  borderRadius: "7px",
+                  borderColor: "green",
                 }}
               >
-                {dropdownItems}
-              </DropdownButton>{" "}
+                SUBMIT
+              </button>
+              {/* <button
+                id="b"
+                type="submit"
+                className="btn btn-success  btn-sm"
+                onClick={handleForm}
+                style={{ fontStyle: "oblique" }}
+                disabled={!formChanged}
+              >
+                SUBMIT
+              </button> */}
             </div>
 
-            <div className="col-sm-3">
-              <div className="end">
-                <button
-                  id="b"
-                  type="submit"
-                  className="btn btn-success mt-3 mb-4 btn-sm"
-                  onClick={handleForm}
-                  style={{ fontStyle: "oblique" }}
-                  disabled={!formChanged}
-                >
-                  SUBMIT
-                </button>
-               
-        <button
-                  type="reset"
-                  className="btn btn-danger  btn-sm"
-                  onClick={cleardata}
-                  style={{ fontStyle: "oblique",position:"relative",bottom:"4px" }}
-                  disabled={!formChanged}
-                >
-                  RESET
-                </button>
-                <button
-                  type="reset"
-                  className="btn btn-primary btn-sm"
-                  onClick={handleExport}
-                  style={{ fontStyle: "oblique",position:"relative",right:"3%",bottom:"55px" }}
-                  // disabled={!FormChanged1}
-                >
-                  DOWNLOAD
-                </button>
-              </div>
+            <div className="col-sm-2">
+              <button
+                id="p12"
+                type="reset"
+                // className="btn btn-danger  btn-sm"
+                onClick={cleardata}
+                style={{
+                  // backgroundColor: "orange",
+                  // color: "white",
+                  position: "relative",
+                  left: "35%",
+                  marginTop: "8%",
+                  fontStyle: "oblique",
+                  borderRadius: "7px",
+                }}
+                disabled={!formChanged}
+              >
+                RESET
+              </button>
+              <button
+                id="p123"
+                type="reset"
+                // className="btn btn-primary btn-sm"
+                onClick={handleExport}
+                style={{
+                  // backgroundColor: "blue",
+                  // color: "white",
+                  position: "relative",
+                  left: "65%",
+                  marginTop: "3%",
+                  fontStyle: "oblique",
+                  borderRadius: "7px",
+                }}
+                // disabled={!FormChanged1}
+              >
+                DOWNLOAD
+              </button>
             </div>
           </div>
         </div>
@@ -828,16 +948,12 @@ function MyDatePicker() {
                 ></MDBDataTable>
               </div>
             </div>
-           
-
           </div>
         </div>{" "}
       </div>
-      
+
       <div className="container">
-        
         {" "}
-        
         <Footer />
       </div>
     </>
