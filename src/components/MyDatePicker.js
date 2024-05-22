@@ -70,43 +70,64 @@ function MyDatePicker() {
     setmytitel1(itemName);
     time = itemName;
     console.log(time, "pooooo");
-    if (time === "6 Months") {
+    if (time === "Last 6 Months") {
+      setshow1(true);
+      showdata="Data of last 6 Months"
+      setshow(false);
       setdisabled(true);
       const tt = new Date(Date.now() - 180 * 24 * 60 * 60 * 1000)
         .toISOString()
         .slice(0, 10);
       setFromDate(tt);
-    } else if (time === "1 Year") {
+    } else if (time === "Last Years") {
+      setshow1(true);
+      showdata="Data of last 1 Year"
       setdisabled(true);
+      setshow(false);
+      
       console.log("pllllllpppooooo");
       const tt = new Date(Date.now() - 365 * 24 * 60 * 60 * 1000)
         .toISOString()
         .slice(0, 10);
       setFromDate(tt);
-    } else if (time === "Random") {
+    } else if (time === "Custom") {
+      setshow1(false);
       setdisabled(false);
-    } else if (time === "2 Years") {
+      setshow(true);
+    } else if (time === "Last 2 Years") {
+      setshow1(true);
+      showdata="Data of last 2 Years"
+      setshow(false);
       setdisabled(true);
       console.log("pllllllpppooooo");
       const tt = new Date(Date.now() - 365 * 2 * 24 * 60 * 60 * 1000)
         .toISOString()
         .slice(0, 10);
       setFromDate(tt);
-    } else if (time === "3 Years") {
+    } else if (time === "Last 3 Years") {
+      setshow1(true);
+      showdata="Data of last 3 Years"
+      setshow(false);
       setdisabled(true);
       console.log("pllllllpppooooo");
       const tt = new Date(Date.now() - 365 * 3 * 24 * 60 * 60 * 1000)
         .toISOString()
         .slice(0, 10);
       setFromDate(tt);
-    } else if (time === "4 Years") {
+    } else if (time === "Last 4 Years") {
+      setshow1(true);
+      showdata="Data of last 4 Years"
+      setshow(false);
       setdisabled(true);
       console.log("pllllllpppooooo");
       const tt = new Date(Date.now() - 365 * 4 * 24 * 60 * 60 * 1000)
         .toISOString()
         .slice(0, 10);
       setFromDate(tt);
-    } else if (time === "5 Years") {
+    } else if (time === "Last 5 Years") {
+      setshow1(true);
+      showdata="Data of last 5 Years"
+      setshow(false);
       setdisabled(true);
       console.log("pllllllpppooooo");
       const tt = new Date(Date.now() - 365 * 5 * 24 * 60 * 60 * 1000)
@@ -118,11 +139,14 @@ function MyDatePicker() {
 
   // const [time, settime] = useState("1 Month");
   const [displaydata, setdisplaydata] = useState(false);
+  const[show,setshow]=useState(false);
+  const[show1,setshow1]=useState(true);
+  let showdata="Graphical Representation";
   const [modaldata, setmodaldata] = useState("");
   const [formChanged, setFormChanged] = useState(false);
   const [FormChanged1, setFormChanged1] = useState(false);
-  const [mytitel, setmytitel] = useState("ALL");
-  const [mytitel1, setmytitel1] = useState("1 Year");
+  const [mytitel, setmytitel] = useState("Client ID");
+  const [mytitel1, setmytitel1] = useState("Timeline");
   const tt = new Date(Date.now() - 365 * 24 * 60 * 60 * 1000)
     .toISOString()
     .slice(0, 10);
@@ -415,7 +439,7 @@ function MyDatePicker() {
     setToDate(ee);
     setSelectedValue("ALL");
     setmytitel("ALL");
-    setmytitel1("1 Year");
+    setmytitel1("Last Years");
   }
   function handleForm(event) {
     event.preventDefault();
@@ -687,13 +711,14 @@ function MyDatePicker() {
     </Dropdown.Item>
   ));
   const options = [
-    "Random",
-    "6 Months",
-    "1 Year",
-    "2 Years",
-    "3 Years",
-    "4 Years",
-    "5 Years",
+    
+    "Last 6 Months",
+    "Last Years",
+    "Last 2 Years",
+    "Last 3 Years",
+    "Last 4 Years",
+    "Last 5 Years",
+    "Custom"
   ];
   const DropdownItem = options.map((values) => (
     <Dropdown.Item
@@ -730,7 +755,7 @@ function MyDatePicker() {
           className="container"
           style={{
             boxShadow: "2px 2px 5px 5px white",
-            borderRadius: "15px",
+            borderRadius: "5px",
             marginTop: "5%",
             width: "200%",
             height: "60px",
@@ -740,15 +765,17 @@ function MyDatePicker() {
           }}
         >
           <div className="row">
+        
             <div className="col-sm-2">
-              <div className="start">
+              {show1&& <div className="showdata">{showdata}</div>}
+           {show&&   <div className="start">
                 <label
                   htmlFor="datePicker"
                   style={{
                     color: "black",
-                    borderRadius: "20px",
+                    // borderRadius: "20px",
                     fontSize: "small",
-                    fontStyle: "oblique",
+                    // fontStyle: "oblique",
                   }}
                   // onClick={setdisabled(false)}
                 >
@@ -765,24 +792,24 @@ function MyDatePicker() {
                   max={new Date().toISOString().slice(0, 10)}
                   onChange={handleDateChange}
                   style={{
-                    borderRadius: "7px",
-                    fontStyle: "oblique",
+                    // borderRadius: "7px",
+                    // fontStyle: "oblique",
                     // marginLeft: "6vh",
                     fontSize: "small",
                   }}
                   disabled={disabled}
                 />
-              </div>
+              </div>}
             </div>
             <div className="col-sm-2">
-              <div className="end">
+              {show &&<div className="end">
                 <label
                   htmlFor="datePicker1"
                   style={{
                     color: "black",
                     // marginLeft: "15vh",
                     fontSize: "small",
-                    fontStyle: "oblique",
+                    // fontStyle: "oblique",
                   }}
                 >
                   To date
@@ -812,22 +839,22 @@ function MyDatePicker() {
                     }
                   }}
                   style={{
-                    borderRadius: "7px",
-                    fontStyle: "oblique",
+                    // borderRadius: "7px",
+                    // fontStyle: "oblique",
 
                     fontSize: "small",
                   }}  
                   disabled={disabled}
                 />
-              </div>
+              </div>}
             </div>
             <div
               className="col-sm-1"
-              style={{ position: "relative", marginTop: ".7%", left: "10%" }}
+              style={{ position: "relative", marginTop: ".7%", left: "13%" }}
             >
               <DropdownButton
                 style={{
-                  fontStyle: "oblique",
+                  // fontStyle: "oblique",
                 }}
                 title={mytitel1}
               >
@@ -836,7 +863,7 @@ function MyDatePicker() {
             </div>
             <div className="col-sm-3">
               <DropdownButton
-                style={{ marginTop: "3%", fontStyle: "oblique" }}
+                style={{ marginTop: "3%"}}
                 title={mytitel}
               >
                 {dropdownItems}{" "}
@@ -850,9 +877,9 @@ function MyDatePicker() {
                 disabled={!formChanged}
                 style={{
                   position: "relative",
-                  left: "85%",
-                  marginTop: "2%",
-                  fontStyle: "oblique",
+                  left: "80%",
+                  marginTop: "2.5%",
+                  // fontStyle: "oblique",
                   borderRadius: "7px",
                   borderColor: "green",
                 }}
@@ -883,7 +910,7 @@ function MyDatePicker() {
                   position: "relative",
                   left: "35%",
                   marginTop: "8%",
-                  fontStyle: "oblique",
+                  // fontStyle: "oblique",
                   borderRadius: "7px",
                 }}
                 disabled={!formChanged}
@@ -901,7 +928,7 @@ function MyDatePicker() {
                   position: "relative",
                   left: "65%",
                   marginTop: "3%",
-                  fontStyle: "oblique",
+                  // fontStyle: "oblique",
                   borderRadius: "7px",
                 }}
                 // disabled={!FormChanged1}

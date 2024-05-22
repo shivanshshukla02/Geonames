@@ -53,7 +53,7 @@ tr{
 #q tr th {
   padding-left: 23px;
   /* border: 2px solid black; */
-  /* font-style: oblique; */
+  /* //font-style: oblique; */
   
   
   
@@ -66,7 +66,7 @@ tr{
   margin-left: 5%;
   top: 600px;
   right: 100px;
-  /* font-style: oblique;
+  /* //font-style: oblique;
   font-size: medium;
   font-weight: bold; */
   width: 80%;
@@ -98,10 +98,10 @@ table {
 }
 .start {
   /* font-size: medium;
-  font-style: oblique; */
+  //font-style: oblique; */
   margin-bottom: 0;
   /* font-size: medium; */
-  /* font-style: oblique; */
+  /* //font-style: oblique; */
   margin-bottom: 0;
   margin-top: 0;
   position: absolute;
@@ -110,7 +110,7 @@ table {
 }
 .end {
   font-size: medium;
-  /* font-style: oblique; */
+  /* //font-style: oblique; */
   margin-bottom: 0;
   margin-top: 0;
   color: #cccccc;
@@ -120,7 +120,7 @@ table {
   color: white;
   border-radius: 10px;
   /* border: 1px solid black; */
-  /* font-style: oblique;/ */
+  /* //font-style: oblique;/ */
 }
 #th {
   justify-content: center;
@@ -136,7 +136,7 @@ table {
 }
 #h2{
   font-size: x-large;
-  /* font-style: oblique; */
+  /* //font-style: oblique; */
   color: rgb(23, 190, 59);
   position: relative;
   right: 380px;
@@ -231,8 +231,8 @@ table {
 }
 
 .dropdown button{
-  color:#ffe4e4;
-  background-color:rgb(53, 117, 220);
+  color:#020101;
+  background-color:rgb(255, 255, 255);
   position:absolute;
   right: 120px;
   top: 7px;
@@ -240,14 +240,14 @@ table {
   align-items: center;
   padding-bottom: 10px;
   padding-top: 1px;
-  border-color: blue;
-  font-style: oblique;
-  
+  border-color: rgb(28, 28, 136);
+ /* font-style: oblique; */
+  box-shadow: 1px 1px 1px 1px black;
 
   /* border: 1px solid rgb(220, 53, 69); */
 }
 .dropdown button:hover{
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   /* background-color:  rgb(220, 53, 69);
   background-color:  rgb(220, 53, 69);
   box-shadow:  rgb(220, 53, 69);; */
@@ -278,35 +278,42 @@ table {
 
 }
 #p1{
-  background-color: rgba(21, 153, 21, 0.689);
-  border-color: rgba(13, 231, 13, 0.325);
-  color: #ffffff;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(13, 231, 13);
+  color: #000000;
+  box-shadow: 1px 1px 1px 1px black;
+  transition: background-color 0.5s, border-color 0.5s, color 0.5s;
 }
 #p1:hover{
-  background-color: rgba(11, 99, 13, 0.499);
+  background-color: rgb(26, 99, 27);
   border-color: rgba(13, 129, 231, 0.322);
-  color: rgb(5, 2, 2);
+  color: rgb(255, 255, 255);
+  transition: background-color 0.5s, border-color 0.5s, color 0.5s;
 }
 #p123{
-  color: #f9f9f9;
-  background-color: #1236b7ce;
-  border-color: #1236b76e;
+  color: #000000;
+  background-color: #ffffff;
+  border-color: #1236b7;
+  box-shadow: 1px 1px 1px 1px black;
 
  } #p123:hover{
-  background-color: rgba(13, 129, 231, 0.499);
+  background-color: rgb(16, 58, 95);
   border-color: rgba(13, 129, 231, 0.322);
-  color: rgb(5, 2, 2);
+  color: rgb(255, 255, 255);
+  transition: background-color 0.5s, border-color 0.5s, color 0.5s;
 }
 #p12{
-  color: rgb(255, 255, 255);
-  background-color: #1e8ba9f4;
-  border-color: #1e8ba9b6;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  border-color: #1e8ba9;
+  box-shadow: 1px 1px 1px 1px black;
 
 }
-#p12:hover{
-  background-color: rgba(13, 129, 231, 0.499);
+#p12:hover {
+  background-color: rgb(17, 88, 155);
   border-color: rgba(13, 129, 231, 0.322);
-  color: rgb(5, 2, 2);
+  color: rgb(255, 255, 255);
+  transition: background-color 0.5s, border-color 0.5s, color 0.5s;
 }
 .dataTables_wrapper{
   position: sticky;
@@ -342,7 +349,7 @@ thead data-test table-foot{
   top:155px;
   left: 1%;
   font-size: x-large;
-  /* font-style: oblique; */
+  /* //font-style: oblique; */
   /* font-weight: bold; */
   /* color: #c1790e; */
 }
@@ -392,7 +399,13 @@ tbody + thead{
   /* border: 2px solid black; */
   box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.411); 
 }
-
+.showdata{
+  font-size:large;
+  font-weight: 500;
+  position: relative;
+  top:5%;
+  left:40%
+}
 .u1:hover{
   cursor: pointeR
 }
