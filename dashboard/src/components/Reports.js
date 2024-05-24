@@ -20,11 +20,11 @@ function Reports() {
           <MyDatePicker />
          
         </div>
-{/* <Footer/> */}
+
 
 
       </div>
-      {/* <DoughnutChart/> */}
+   
       
     </>
   );
